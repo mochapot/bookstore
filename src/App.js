@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
-import Booklist from "./pages/Booklist";
-import Bookdetail from "./pages/Bookdetail";
+import Booklist from "./components/Booklist";
+import Bookdetail from "./components/Bookdetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
