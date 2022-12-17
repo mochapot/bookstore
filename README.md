@@ -1,6 +1,7 @@
 # 미니 프로젝트 - 교보문고
 
-## 팀활동: [교보문고 미니 프로젝트](https://www.notion.so/bbb3fc5260ff47eeb1d22eab83f352a6)
+## 팀활동
+[교보문고 미니 프로젝트](https://www.notion.so/bbb3fc5260ff47eeb1d22eab83f352a6)
 
 ## 프로젝트 구조  
 * public
