@@ -2,7 +2,9 @@
 
 ## 팀원
 김철호 [Github](https://github.com/Haeparic)
+<br />
 김재진 [Github](https://github.com/mochapot)
+<br />
 반재원 [Github](https://github.com/Banjae)
 
 ## 팀활동
