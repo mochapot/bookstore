@@ -1,5 +1,5 @@
 @charset 'utf-8';
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Oswald:wght@600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -22,8 +22,65 @@ img {
 
 html {
   font-size: 16px;
+	border: 12px solid #d3d3d3;
 }
 
 body {
   font-family: "IBM Plex Sans KR", sans-serif;
+}
+.root {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  text-align: center;
+  margin-top: 20px;
+  
+}
+/* 헤더 */
+.site-title-link {
+  display: block;
+  width: 210px;
+  height: 90px;
+  background: url(../public/images/kyobo_logo.png) no-repeat center /contain;
+  margin: 0 auto;
+}
+.site-description {
+	font-size:14px;
+	font-style:italic;
+	font-weight:300;
+  line-height: 14px;
+	margin-bottom:20px;
+	padding-top: 0;
+}
+.main-menu {
+  padding: 5px 0;
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+}
+.nav-link {
+  font-family: 'Oswald', sans-serif;
+  color: #000;
+}
+/* Home */
+/* 푸터 */
+.site-footer {
+  background: #023770;
+  padding: 10px 0;
+}
+.site-info {
+  margin-bottom: 20px;
+}
+.footer-title-link {
+  display: block;
+  width: 150px;
+  height: 70px;
+  background: url(../public/images/kyobo_logo_white.png) no-repeat center /contain;
+  margin: 0 auto;
+}
+.footer-description {
+  color: #fff;
+	font-size:12px;
+	font-weight:300;
+  line-height: 12px;
 }
