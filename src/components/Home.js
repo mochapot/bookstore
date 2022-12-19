@@ -32,25 +32,37 @@ const Home = () => {
         </div>
         <div class="carousel-inner pt-200">
           <div class="carousel-item  active" data-bs-interval="7000">
-            <h2 className="carousel-caption position-absolute top-50 start-50">
+            <h3 className="carousel-caption position-absolute text-end">
               주도적인 삶을 살기 위한 <br />
               3단계 핵심 솔루션
-            </h2>
-            <img src="images/i_1624_450_1.jpg" class="img-fluid" alt="..." />
+            </h3>
+            <img
+              src={process.env.PUBLIC_URL + "/images/banner1.jpg"}
+              className="img-fluid"
+              alt="banner1"
+            />
           </div>
           <div class="carousel-item">
-            <h2 className="carousel-caption position-absolute top-50 start-50">
+            <h3 className="carousel-caption position-absolute text-end">
               새로운 관점으로 <br />
               우리의 삶을 위로한다
-            </h2>
-            <img src="images/i_1624_450_2.jpg" class="img-fluid" alt="..." />
+            </h3>
+            <img
+              src={process.env.PUBLIC_URL + "/images/banner2.jpg"}
+              className="img-fluid"
+              alt="banner2"
+            />
           </div>
           <div class="carousel-item">
-            <h2 className="carousel-caption position-absolute top-50 start-50">
+            <h3 className="carousel-caption position-absolute text-end">
               새로운 언어는 <br />
               새로운 시대를 반영한다
-            </h2>
-            <img src="images/i_1624_450_3.jpg" class="img-fluid" alt="..." />
+            </h3>
+            <img
+              src={process.env.PUBLIC_URL + "/images/banner3.jpg"}
+              className="img-fluid"
+              alt="banner3"
+            />
           </div>
         </div>
         <button
@@ -72,8 +84,56 @@ const Home = () => {
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div>
-        <h2>오늘의 선택</h2>
+      <div class="container">
+        <div class="section-title">
+          <h2>오늘의 선택</h2>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <img
+              src={process.env.PUBLIC_URL + "/images/book1.jpg"}
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">책 제목1</h5>
+              <span class="card-text">작가1</span>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src={process.env.PUBLIC_URL + "/images/book2.jpg"}
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">책 제목1</h5>
+              <span class="card-text">작가1</span>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src={process.env.PUBLIC_URL + "/images/book3.jpg"}
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">책 제목1</h5>
+              <span class="card-text">작가1</span>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src={process.env.PUBLIC_URL + "/images/book4.jpg"}
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">책 제목1</h5>
+              <span class="card-text">작가1</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
