@@ -8,7 +8,7 @@ const Bookdetail = () => {
         <div class="d-flex justify-content-around">
           <div>
             <div>
-              <img class="bookpic" src="/photo/meenoi.jpg" alt = "meenoi"/>
+              <img class="bookpic" src="photo/meenoi.jpg" alt = "meenoi"/>
             </div>
             <div class="d-flex justify-content-center">
               <button type="button" class="btn btn-light btn-sm m-1">
