@@ -63,6 +63,10 @@ body {
   color: #000;
 }
 /* Home */
+.carousel-caption {
+  top: 30%;
+  left: 60%;
+}
 /* 푸터 */
 .site-footer {
   background: #023770;
