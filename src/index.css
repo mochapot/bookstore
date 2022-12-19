@@ -57,6 +57,10 @@ body {
   color: #000;
 }
 /* Home */
+.carousel-caption {
+  top: 30%;
+  left: 60%;
+}
 /* Bookdetaill */
 .bookpic {
   width: 300px;
@@ -90,7 +94,6 @@ body {
 }
 .detail-main {
   gap: 5px
-}
 /* 푸터 */
 .site-footer {
   background: #023770;
