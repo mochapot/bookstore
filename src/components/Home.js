@@ -2,30 +2,29 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = (props) => {
-  // const List = props.bookli.map((item) => {
-  //   return (
-  //     <li>
-  //       <a href="#" className="block overflow-hidden group">
-  //         <img
-  //           src={process.env.PUBLIC_URL + "/images/book1.jpg"}
-  //           alt=""
-  //           className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-  //         />
-  //         <div className="relative pt-3 bg-white">
-  //           <p>
-  //             <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
-  //             {item.title}
-  //             </span>
-  //           </p>
-  //           <span className="text-xs text-gray-700">{item.author}</span>
-  //         </div>
-  //       </a>
-  //     </li>
-  //   );
-  // });
+  const list = props.bookli.map((item) => {
+    return (
+      <li key={item.seq}>
+        <Link to={"/bookdetail"} className="block overflow-hidden group">
+          <img
+            src={process.env.PUBLIC_URL + "/images/book1.jpg"}
+            alt=""
+            className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+          />
+          <div className="relative pt-3 bg-white">
+            <p>
+              <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
+                {item.title}
+              </span>
+            </p>
+            <span className="text-xs text-gray-700">{item.author}</span>
+          </div>
+        </Link>
+      </li>
+    );
+  });
   return (
     <div className="container">
-      {/* console.log({List}); */}
       <div
         id="carouselExampleInterval"
         className="carousel slide carousel-fade mt-3 mb-5"
@@ -126,75 +125,7 @@ const Home = (props) => {
         </div>
         <hr />
         <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book1.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 1 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 1
-                </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book2.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain trnansition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 2 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 2
-                </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book3.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 3 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 3
-                </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book4.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 4 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 4
-                </span>
-              </div>
-            </a>
-          </li> */}
-          {/* {List} */}
+          {list}
         </ul>
       </div>
     </div>

@@ -24,7 +24,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/mochapot">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -52,7 +52,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/Haeparic">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -80,7 +80,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/Banjae">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -108,7 +108,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -136,7 +136,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -164,7 +164,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -192,7 +192,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
