@@ -74,7 +74,7 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-.point-txt{
+.green-txt{
   font-weight: 700;
   color: #4dac27;
 }
@@ -90,6 +90,9 @@ body {
 }
 .detail-main {
   gap: 5px
+}
+p {
+  margin: 0;
 }
 /* 푸터 */
 .site-footer {

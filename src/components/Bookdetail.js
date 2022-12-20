@@ -10,7 +10,7 @@ const Bookdetail = (props) => {
           <div className="d-flex gap-5">
             <div>
               <div>
-                <img className="bookpic m-2" src="photo/9791164064878.jpg" alt = "meenoi"/>
+                <img className="bookpic m-2 shadow-lg p-1 mb-5 bg-body" src="photo/9791164064878.jpg" alt = "meenoi"/>
               </div>
               <div className="d-flex justify-content-center">
                 <button type="button" className="btn btn-light btn-sm m-1 rounded-pill border border-secondary">
@@ -32,12 +32,16 @@ const Bookdetail = (props) => {
                 <span>&nbsp;·&nbsp;</span>
                 <p>날짜</p>
               </div>
-              <h4 className="d-flex justify-content-start">{item.price}원</h4>
+              <div className="d-flex">
+                <h4 className="green-txt m-1 mb-0">{100*item.discount}%</h4>
+                <h4 className="m-1 mb-0">{item.price*(1-item.discount)}원</h4>
+                <p class="text-decoration-line-through fs-6 d-flex align-items-end">{item.price}원</p>
+              </div>
               <span className="line"></span>
               <div className="d-flex justify-content-between">
                 <h6>적립/혜택</h6>
                 <div className="d-flex justify-content-end">
-                  <span className="point-txt">{item.point}P</span>
+                  <span className="green-txt">{item.point}P</span>
                   <button className="del-bt">
                     <i className="bi bi-arrow-down-circle m-1"></i>
                   </button>
