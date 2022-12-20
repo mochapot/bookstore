@@ -1,9 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = (props) => {
+  // const List = props.bookli.map((item) => {
+  //   return (
+  //     <li>
+  //       <a href="#" className="block overflow-hidden group">
+  //         <img
+  //           src={process.env.PUBLIC_URL + "/images/book1.jpg"}
+  //           alt=""
+  //           className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+  //         />
+  //         <div className="relative pt-3 bg-white">
+  //           <p>
+  //             <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
+  //             {item.title}
+  //             </span>
+  //           </p>
+  //           <span className="text-xs text-gray-700">{item.author}</span>
+  //         </div>
+  //       </a>
+  //     </li>
+  //   );
+  // });
   return (
     <div className="container">
+      {/* console.log({List}); */}
       <div
         id="carouselExampleInterval"
         className="carousel slide carousel-fade mt-3 mb-5"
@@ -103,134 +125,76 @@ const Home = () => {
           </Link>
         </div>
         <hr />
-        {/* <div className="container mb-5">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-            <div className="col">
-              <div className="card h-100">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/book1.jpg"}
-                  className="card-img-top"
-                  alt="book1"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">책 제목1</h5>
-                  <p className="card-text">작가1</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card h-100">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/book2.jpg"}
-                  className="card-img-top"
-                  alt="book2"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">책 제목2</h5>
-                  <p className="card-text">작가2</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card h-100">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/book3.jpg"}
-                  className="card-img-top"
-                  alt="book3"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">책 제목3</h5>
-                  <p className="card-text">작가3</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card h-100">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/book4.jpg"}
-                  className="card-img-top"
-                  alt="book4"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">책 제목4</h5>
-                  <p className="card-text">작가4</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-        <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-          <li>
-            <a href="#" class="block overflow-hidden group">
+        <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* <li>
+            <a href="#" className="block overflow-hidden group">
               <img
                 src={process.env.PUBLIC_URL + "/images/book1.jpg"}
                 alt=""
-                class="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
-              <div class="relative pt-3 bg-white">
+              <div className="relative pt-3 bg-white">
                 <p>
-                  <span class="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 1 </span>
+                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 1 </span>
                 </p>
-                <span class="text-xs text-gray-700">
+                <span className="text-xs text-gray-700">
                   작가 1
                 </span>
               </div>
             </a>
           </li>
-
           <li>
-            <a href="#" class="block overflow-hidden group">
+            <a href="#" className="block overflow-hidden group">
               <img
                 src={process.env.PUBLIC_URL + "/images/book2.jpg"}
                 alt=""
-                class="h-[250px] w-full object-contain trnansition duration-500 group-hover:scale-105 sm:h-[350px]"
+                className="h-[250px] w-full object-contain trnansition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
-              <div class="relative pt-3 bg-white">
+              <div className="relative pt-3 bg-white">
                 <p>
-                  <span class="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 2 </span>
+                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 2 </span>
                 </p>
-                <span class="text-xs text-gray-700">
+                <span className="text-xs text-gray-700">
                   작가 2
                 </span>
               </div>
             </a>
           </li>
-
           <li>
-            <a href="#" class="block overflow-hidden group">
+            <a href="#" className="block overflow-hidden group">
               <img
                 src={process.env.PUBLIC_URL + "/images/book3.jpg"}
                 alt=""
-                class="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
-              <div class="relative pt-3 bg-white">
+              <div className="relative pt-3 bg-white">
                 <p>
-                  <span class="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 3 </span>
+                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 3 </span>
                 </p>
-                <span class="text-xs text-gray-700">
+                <span className="text-xs text-gray-700">
                   작가 3
                 </span>
               </div>
             </a>
           </li>
-
           <li>
-            <a href="#" class="block overflow-hidden group">
+            <a href="#" className="block overflow-hidden group">
               <img
                 src={process.env.PUBLIC_URL + "/images/book4.jpg"}
                 alt=""
-                class="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
-              <div class="relative pt-3 bg-white">
+              <div className="relative pt-3 bg-white">
                 <p>
-                  <span class="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 4 </span>
+                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 4 </span>
                 </p>
-                <span class="text-xs text-gray-700">
+                <span className="text-xs text-gray-700">
                   작가 4
                 </span>
               </div>
             </a>
-          </li>
+          </li> */}
+          {/* {List} */}
         </ul>
       </div>
     </div>
