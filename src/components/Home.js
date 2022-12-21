@@ -2,30 +2,57 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = (props) => {
-  // const List = props.bookli.map((item) => {
-  //   return (
-  //     <li>
-  //       <a href="#" className="block overflow-hidden group">
-  //         <img
-  //           src={process.env.PUBLIC_URL + "/images/book1.jpg"}
-  //           alt=""
-  //           className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-  //         />
-  //         <div className="relative pt-3 bg-white">
-  //           <p>
-  //             <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
-  //             {item.title}
-  //             </span>
-  //           </p>
-  //           <span className="text-xs text-gray-700">{item.author}</span>
-  //         </div>
-  //       </a>
-  //     </li>
-  //   );
+  // const list = props.bookli.map((item) => {
+  //     return (
+  //       <li key={item.seq}>
+  //         <Link to={"/bookdetail"} className="block overflow-hidden group">
+  //           <img
+  //             src={process.env.PUBLIC_URL + "/images/book1.jpg"}
+  //             alt=""
+  //             className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+  //           />
+  //           <div className="relative pt-3 bg-white">
+  //             <p>
+  //               <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
+  //                 {item.title}
+  //               </span>
+  //             </p>
+  //             <span className="text-xs text-gray-700">{item.author}</span>
+  //           </div>
+  //         </Link>
+  //       </li>
+  //     );
   // });
+
+  const list = props.bookli
+    .filter((item) => `${item.seq}` < 5)
+    .map((item) => {
+      return (
+        <li key={item.seq}>
+          <Link
+            to={`/bookdetail/${item.seq}`}
+            className="block overflow-hidden group"
+          >
+            <img
+              src={process.env.PUBLIC_URL + "/images/book1.jpg"}
+              alt=""
+              className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+            />
+            <div className="relative pt-3 bg-white">
+              <p>
+                <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
+                  {item.title}
+                </span>
+              </p>
+              <span className="text-xs text-gray-700">{item.author}</span>
+            </div>
+          </Link>
+        </li>
+      );
+    });
+
   return (
     <div className="container">
-      {/* console.log({List}); */}
       <div
         id="carouselExampleInterval"
         className="carousel slide carousel-fade mt-3 mb-5"
@@ -55,7 +82,7 @@ const Home = (props) => {
         </div>
         <div className="carousel-inner pt-200">
           <div className="carousel-item  active" data-bs-interval="7000">
-            <h3 className="carousel-caption position-absolute text-end text-3xl">
+            <h3 className="carousel-caption position-absolute text-end text-3xl font-semibold">
               주도적인 삶을 살기 위한 <br />
               3단계 핵심 솔루션
             </h3>
@@ -66,7 +93,7 @@ const Home = (props) => {
             />
           </div>
           <div className="carousel-item">
-            <h3 className="carousel-caption position-absolute text-end text-3xl">
+            <h3 className="carousel-caption position-absolute text-end text-3xl font-semibold">
               새로운 관점으로 <br />
               우리의 삶을 위로한다
             </h3>
@@ -77,7 +104,7 @@ const Home = (props) => {
             />
           </div>
           <div className="carousel-item">
-            <h3 className="carousel-caption position-absolute text-end text-3xl">
+            <h3 className="carousel-caption position-absolute text-end text-3xl font-semibold">
               새로운 언어는 <br />
               새로운 시대를 반영한다
             </h3>
@@ -114,8 +141,10 @@ const Home = (props) => {
         </button>
       </div>
       <div className="container home-book mb-5">
-        <div className="section-title d-flex justify-content-between m-3">
-          <h2 className="text-3xl font-medium"># 오늘의 선택</h2>
+        <div className="section-title d-flex justify-content-between m-1 mb-2">
+          <h2 className="text-3xl font-semibold tracking-tight">
+            # 오늘의 선택
+          </h2>
           <Link
             className="btn text-base align-self-center home-book-link"
             to={"/booklist"}
@@ -126,76 +155,166 @@ const Home = (props) => {
         </div>
         <hr />
         <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book1.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 1 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 1
-                </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book2.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain trnansition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 2 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 2
-                </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book3.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 3 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 3
-                </span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block overflow-hidden group">
-              <img
-                src={process.env.PUBLIC_URL + "/images/book4.jpg"}
-                alt=""
-                className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
-              <div className="relative pt-3 bg-white">
-                <p>
-                  <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4"> 제목 4 </span>
-                </p>
-                <span className="text-xs text-gray-700">
-                  작가 4
-                </span>
-              </div>
-            </a>
-          </li> */}
-          {/* {List} */}
+          {list}
         </ul>
+      </div>
+      <div className="container mb-5 grid gap-4 md:grid-cols-2">
+        <div>
+          <div className="d-flex justify-content-between m-1">
+            <span className="text-xl text-gray-800 font-semibold align-self-center">
+              공지사항
+            </span>
+            <Link
+              className="btn text-base align-self-center home-book-link"
+              to={"/"}
+              role="button"
+            >
+              MORE
+            </Link>
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            <article className="card p-3">
+              <Link to={"/"}>
+                <span className="block text-gray-400 text-sm">2022.12.16</span>
+                <div className="mt-1">
+                  <h3 className="notice-title text-lg text-gray-900 font-semibold hover:underline text-ellipsis overflow-hidden">
+                    폭설로 인한 배송지연 안내 (12/16~)
+                  </h3>
+                  <p className="notice-txt text-sm text-gray-400 mt-1 leading-relaxed text-ellipsis overflow-hidden">
+                    안녕하세요. 꿈을 키우는 세상, 교보문고입니다. 전국 폭설로
+                    인한 배송지연이 예상되어 안내드립니다.
+                  </p>
+                </div>
+                <button className="mt-2 outline-none flex items-center text-[14px] text-blue-600 decoration-blue-600 hover:underline">
+                  READ MORE
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </article>
+            <article className="card p-3 hidden md:block">
+              <Link to={"/"}>
+                <span className="block text-gray-400 text-sm">2022.11.16</span>
+                <div className="mt-1">
+                  <h3 className="notice-title text-lg text-gray-900 font-semibold hover:underline text-ellipsis overflow-hidden">
+                    카드결제(간편결제, 법인카드 포함) 취소 안내
+                  </h3>
+                  <p className="notice-txt text-sm text-gray-400 mt-1 leading-relaxed text-ellipsis overflow-hidden">
+                    안녕하세요. 꿈을 키우는 세상 교보문고입니다. 카드 결제 취소
+                    시 소요 기간 관련하여 안내 드립니다.
+                  </p>
+                </div>
+                <button className="mt-2 outline-none flex items-center text-[14px] text-blue-600 decoration-blue-600 hover:underline">
+                  READ MORE
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </article>
+          </div>
+        </div>
+        <div>
+          <div className="d-flex justify-content-between m-1">
+            <span className="text-xl text-gray-800 font-semibold align-self-center">
+              당첨자 발표
+            </span>
+            <Link
+              className="btn text-base align-self-center home-book-link"
+              to={"/"}
+              role="button"
+            >
+              MORE
+            </Link>
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            <article className="card p-3">
+              <Link to={"/"}>
+                <span className="block text-gray-400 text-sm">2022.12.21</span>
+                <div className="mt-1">
+                  <h3 className="notice-title text-lg text-gray-900 font-semibold hover:underline text-ellipsis overflow-hidden">
+                    [공통]과학을 채우는 시간#9 당첨자 발표
+                  </h3>
+                  <p className="notice-txt text-sm text-gray-400 mt-1 leading-relaxed text-ellipsis overflow-hidden">
+                    안녕하세요. 고객님 [과학을 채우는 시간#9]에 당첨을
+                    축하드립니다. 당첨되신 분들께는 아래 선물을 드립니다.
+                  </p>
+                </div>
+                <button className="mt-2 outline-none flex items-center text-[14px] text-blue-600 decoration-blue-600 hover:underline">
+                  READ MORE
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </article>
+            <article className="card p-3 hidden md:block">
+              <Link to={"/"}>
+                <span className="block text-gray-400 text-sm">2022.12.21</span>
+                <div className="mt-1">
+                  <h3 className="notice-title text-lg text-gray-900 font-semibold hover:underline text-ellipsis overflow-hidden">
+                    [비즈니스]《하루 한 장 고전 수업》 출간 이벤트 당첨자 발표
+                  </h3>
+                  <p className="notice-txt text-sm text-gray-400 mt-1 leading-relaxed text-ellipsis overflow-hidden">
+                    안녕하세요. 고객님 [《하루 한 장 고전 수업》 출간 이벤트]에
+                    당첨을 축하드립니다. 당첨되신 분들께는 아래 선물을 드립니다.
+                  </p>
+                </div>
+                <button className="mt-2 outline-none flex items-center text-[14px] text-blue-600 decoration-blue-600 hover:underline">
+                  READ MORE
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </article>
+          </div>
+        </div>
       </div>
     </div>
   );

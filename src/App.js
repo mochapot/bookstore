@@ -1,7 +1,10 @@
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Search from "./components/Search";
 import Booklist from "./components/Booklist";
 import Bookdetail from "./components/Bookdetail";
+import Team from "./components/Team";
+import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
@@ -20,6 +23,7 @@ const App = () => {
 
   const { id } = useParams;
 
+console.log(params1);
   const fetchData = async () => {
     const params = {
       page: page,
@@ -41,8 +45,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home bookli={bookli} />} />
+        <Route path="/search" element={<Search />}>
+          <Route path=":word" element={<Search bookli={bookli} />} />
+        </Route>
         <Route path="/booklist" element={<Booklist />} />
         <Route path="/bookdetail/:id" element={<Bookdetail />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

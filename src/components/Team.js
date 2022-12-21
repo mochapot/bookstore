@@ -1,6 +1,6 @@
 import React from "react";
 
-const About = () => {
+const Team = () => {
   return (
     <div className="p-4">
       <p className="text-3xl font-bold text-center text-gray-800">
@@ -15,16 +15,18 @@ const About = () => {
             <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2"></div>
             <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800">
               <div className="text-center">
-                <p className="text-2xl text-gray-800 dark:text-white">김재진</p>
+                <p className="text-2xl text-gray-800 dark:text-white">
+                  김철호 (팀장)
+                </p>
                 <p className="text-xl font-light text-gray-500 dark:text-gray-200">
                   Front-end
                 </p>
                 <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                  Booklist 파트
+                  Home, Team 파트
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/Haeparic">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -43,16 +45,16 @@ const About = () => {
             <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2"></div>
             <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800">
               <div className="text-center">
-                <p className="text-2xl text-gray-800 dark:text-white">김철호</p>
+                <p className="text-2xl text-gray-800 dark:text-white">김재진</p>
                 <p className="text-xl font-light text-gray-500 dark:text-gray-200">
                   Front-end
                 </p>
                 <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                  Home, About 파트
+                  Booklist 파트
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/mochapot">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -80,7 +82,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/Banjae">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -99,16 +101,18 @@ const About = () => {
             <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2"></div>
             <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800">
               <div className="text-center">
-                <p className="text-2xl text-gray-800 dark:text-white">홍길동</p>
+                <p className="text-2xl text-gray-800 dark:text-white">
+                  주봉진 (팀장)
+                </p>
                 <p className="text-xl font-light text-gray-500 dark:text-gray-200">
                   Back-end
                 </p>
                 <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                  파트
+                  책상세정보 api
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -127,16 +131,16 @@ const About = () => {
             <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2"></div>
             <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800">
               <div className="text-center">
-                <p className="text-2xl text-gray-800 dark:text-white">홍길동</p>
+                <p className="text-2xl text-gray-800 dark:text-white">권영장</p>
                 <p className="text-xl font-light text-gray-500 dark:text-gray-200">
                   Back-end
                 </p>
                 <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                  파트
+                  최신도서정렬 api
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -155,16 +159,16 @@ const About = () => {
             <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2"></div>
             <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800">
               <div className="text-center">
-                <p className="text-2xl text-gray-800 dark:text-white">홍길동</p>
+                <p className="text-2xl text-gray-800 dark:text-white">유상연</p>
                 <p className="text-xl font-light text-gray-500 dark:text-gray-200">
                   Back-end
                 </p>
                 <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                  파트
+                  책기본정보 api
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -183,16 +187,16 @@ const About = () => {
             <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2"></div>
             <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800">
               <div className="text-center">
-                <p className="text-2xl text-gray-800 dark:text-white">홍길동</p>
+                <p className="text-2xl text-gray-800 dark:text-white">이민석</p>
                 <p className="text-xl font-light text-gray-500 dark:text-gray-200">
                   Back-end
                 </p>
                 <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                  파트
+                  도서 검색기능 api
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="#">
+                <a href="https://github.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -213,4 +217,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Team;

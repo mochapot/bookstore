@@ -19,18 +19,23 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to={"/about"}>
-                About
+              <Link className="nav-link" to={"/search"}>
+                Search
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to={"/booklist"}>
-                Shop
+                Booklist
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to={"/bookdetail"}>
-                ShopDetail(임시)
+              <Link className="nav-link" to={"/bookdetail/1"}>
+                Bookdetail
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/team"}>
+                Team
               </Link>
             </li>
           </ul>
