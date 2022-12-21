@@ -1,5 +1,6 @@
 const request = {
-  fetchBook: "/api/book/detail"
+  fetchBook: "/book/api/detail",
+  fetchBookList: "/api/book/list",
 }
 
 export default request

@@ -7,15 +7,20 @@ const Header = () => {
       <header id="masthead" className="site-header">
         <div className="site-branding">
           <span className="site-title">
-            <Link to="/" className="site-title-link"></Link>
+            <Link to="/" className="site-title-link img-fluid"></Link>
           </span>
           <h2 className="site-description">꿈을 키우는 세상</h2>
         </div>
         <nav className="main-menu">
-          <ul id="menu-menu-1" class="nav justify-content-center">
+          <ul id="menu-menu-1" className="nav justify-content-center">
             <li className="nav-item">
               <Link className="nav-link" to={"/"}>
                 Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/about"}>
+                About
               </Link>
             </li>
             <li className="nav-item">

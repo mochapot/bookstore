@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Home from "./components/Home";
+import About from "./components/About";
 import Booklist from "./components/Booklist";
 import Bookdetail from "./components/Bookdetail";
 import Footer from "./components/Footer";
@@ -19,6 +20,5 @@ const App = () => {
     </Router>
   );
 };
-
 
 export default App;

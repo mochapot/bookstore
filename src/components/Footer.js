@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer id="colophon" className="site-footer">
-      <div class="container">
-        <div class="site-info">
+      <div className="container">
+        <div className="site-info">
           <span className="footer-title">
             <Link to="/" className="footer-title-link"></Link>
           </span>

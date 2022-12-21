@@ -73,14 +73,20 @@ const Bookdetail = () => {
                 <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "..."/>
               </div>
               <div className="d-flex justify-content-center">
-                <button type="button" className="btn btn-light btn-sm m-1 rounded-pill border border-secondary">
+                <button
+                  type="button"
+                  className="btn btn-light btn-sm m-1 rounded-pill border border-secondary"
+                >
                   <i className="bi bi-book m-1"></i>
                   미리보기
                 </button>
-                <button type="button" className="btn btn-light btn-sm m-1 rounded-pill border border-secondary">
+                <button
+                  type="button"
+                  className="btn btn-light btn-sm m-1 rounded-pill border border-secondary"
+                >
                   <i className="bi bi-laptop m-1"></i>
                   eBook 미리보기
-                  </button>
+                </button>
               </div>
             </div>
             <div className="p-1">
@@ -180,7 +186,7 @@ const Bookdetail = () => {
                       <i className="bi bi-question-circle m-1"></i>
                     </button>
                   </div>
-                </div>              
+                </div>
               </div>
               <span className="line"></span>
               <div className="d-flex justify-content-between">
@@ -202,7 +208,7 @@ const Bookdetail = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center m-3">
-        <div className="card" style={{width: '80%'}}>
+        <div className="card" style={{ width: "80%" }}>
           <div className="card-header text-start">책 소개</div>
           <div className="card-text text-start m-3">
             {detail.overview}
@@ -210,7 +216,7 @@ const Bookdetail = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Bookdetail
+export default Bookdetail;
