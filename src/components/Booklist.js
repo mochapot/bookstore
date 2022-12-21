@@ -31,7 +31,7 @@ const Booklist = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const strPage = searchParams.get("page");
-    setPage(parseInt(strPage !== null ? strPage : "1"));
+    setPage(parseInt(strPage !== null ? strPage : "0"));
   }, [searchParams]);
 
   const goPrev = () => {
@@ -52,7 +52,7 @@ const Booklist = () => {
       <div className="col d-flex justify-content-center">
         <Link to={`/bookdetail/${item.seq}`}>
           <div className="card h-100" style={divSize}>
-            <img src="images/1.jpg" className="card-img-top" alt="..." />
+            <img src={item.image} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title text-start" style={fontSize}>
                 {item.title}
