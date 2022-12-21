@@ -106,9 +106,14 @@ p {
 .info-bx {
   font-size: 13px;
 }
+.cate {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .sns-bt {
   position: absolute;
-  top: 0px;
+  top: -5px;
   right: -25px;
   border: 1px solid #d3d3d3;
   border-radius: 50%;
@@ -118,7 +123,7 @@ p {
 }
 .share-bt {
   position: absolute;
-  top: 55px;
+  top: 50px;
   right: -25px;
   border: 1px solid #d3d3d3;
   border-radius: 50%;

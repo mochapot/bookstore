@@ -1,14 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
+import instance from '../api/axios';
+import request from '../api/request';
 
-const Bookdetail = (props) => {
+const Bookdetail = () => {
   
-  const item = props.book;
-  console.log(item);
+  const [detail, setDetail] = useState([]);
+
+  // URI 처리
+  const { id } = useParams();  
+
+  const fetchData = async () => {
+    const params = {
+      Seq: id
+    };
+    const resultBook = await instance.get(request.fetchBook, {params});
+    setDetail(resultBook.data.list[0]);
+  }
+
+  useEffect( () => {
+    fetchData();
+  }, []);
 
   // 천원단위 콤마
   function comprice(price) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
+
+  // 포인트 반올림
+  const round = (x) => {
+    return Math.ceil(x)
+  };
 
   // 날짜 구하기
   let today = new Date();   
@@ -34,13 +56,21 @@ const Bookdetail = (props) => {
 
   return (
     <div className="container">
-      <div>
-        <div className="d-flex justify-content-start">카테고리 / 목록</div>
+      <div className="position-relative">
+        <div className="cate"> 
+          <Link to ="/">Home</Link>
+          <span></span>
+          <Link to ="/booklist">List</Link>
+        </div>
+        <div className="d-flex justify-content-center flex-column m-4">
+          <h2>{detail.title}</h2>
+          <h6>{detail.subtitle}</h6>
+        </div>
         <div className="d-flex justify-content-center">
           <div className="d-flex gap-5">
-            <div>
-              <div>
-                <img className="bookpic m-2 shadow-lg p-1 mb-5 bg-body" src= {item.image} alt = "..."/>
+            <div>              
+              <div className="p-1">
+                <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "..."/>
               </div>
               <div className="d-flex justify-content-center">
                 <button type="button" className="btn btn-light btn-sm m-1 rounded-pill border border-secondary">
@@ -53,7 +83,7 @@ const Bookdetail = (props) => {
                   </button>
               </div>
             </div>
-            <div>
+            <div className="p-1">
               <div className="position-relative">
                 <button type= "button" className="sns-bt btn-success btn-outline-secondary">
                   <i className="bi bi-share"></i>
@@ -61,25 +91,23 @@ const Bookdetail = (props) => {
                 <button type= "button" className="share-bt btn-success btn-outline-secondary" onClick={changeHeart}>
                   <i className={clickHeart ? "bi bi-suit-heart" : "bi bi-suit-heart-fill"}></i>
                 </button>
-              </div>  
-              <h2 className="d-flex justify-content-start ms-4">{item.title}</h2>
-              <h6 className="d-flex justify-content-start ms-4">{item.subtitle}</h6>
-              <h4 className="d-flex justify-content-start ms-4">{item.author}&nbsp;저자</h4>
+              </div>
+              <h5 className="d-flex justify-content-start ms-4">{detail.author}&nbsp;저자</h5>
               <div className="d-flex ms-4">
-                <p>{item.publisher}</p>
+                <p>{detail.publisher}</p>
                 <span>&nbsp;·&nbsp;</span>
-                <p>{item.regDt}</p>
+                <p>{detail.regDt}</p>
               </div>
               <div className="d-flex ms-4">
-                <p className="fs-4 green-txt">{100*item.discount}%</p>
-                <h4 className="m-1 mb-0">{comprice( item.price * (1 - item.discount) )}원</h4>
-                <p className="text-decoration-line-through fs-6 d-flex align-items-end">{comprice( item.price * 1 )}원</p>
+                <p className="fs-4 green-txt">{100*detail.discount}%</p>
+                <h4 className="m-1 mb-0">{comprice( detail.price * (1 - detail.discount) )}원</h4>
+                <p className="text-decoration-line-through fs-6 d-flex align-items-end">{comprice( detail.price * 1 )}원</p>
               </div>
               <span className="line"></span>
               <div className="d-flex justify-content-between ms-4 me-4">
                 <p className="fw-bold">적립/혜택</p>
                 <div className="d-flex justify-content-end">
-                  <span className="green-txt">{item.price*0.05}P</span>
+                  <span className="green-txt">{round(detail.price*0.05)}P</span>
                   <div className="dropdown">
                     <button className="del-bt" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false" onClick={changeArrow}>
                       <i className={clickArrow ? "m-1 bi bi-arrow-down-circle" : "m-1 bi bi-arrow-up-circle-fill"}></i>
@@ -89,7 +117,7 @@ const Bookdetail = (props) => {
                         <p className="fw-bold mb-1 fs-6">기본적립</p>
                         <div className="d-flex justify-content-between">
                           <p>5%기본적립</p>
-                          <p>{item.price*0.05}P</p>
+                          <p>{round(detail.price*0.05)}P</p>
                         </div>
                       </li>
                       <span className="line"></span>
@@ -156,15 +184,15 @@ const Bookdetail = (props) => {
               </div>
               <span className="line"></span>
               <div className="d-flex justify-content-between">
-                <button type="button" className="btn btn-outline-light btn-lg btn-warning m-2">
+                <button type="button" className="btn btn-outline-light btn-md btn-warning m-2">
                   <i className="bi bi-gift m-2"></i>
                   선물하기
                 </button>
-                <button type="button" className="btn btn-outline-light btn-lg btn-secondary m-2">
+                <button type="button" className="btn btn-outline-light btn-md btn-secondary m-2">
                   <i className="bi bi-cart4 m-2"></i>
                   장바구니
                 </button>
-                <button type="button" className="btn btn-outline-light btn-lg btn-primary m-2">
+                <button type="button" className="btn btn-outline-light btn-md btn-primary m-2">
                   <i className="bi bi-credit-card m-2"></i>
                   바로구매
                 </button>
@@ -177,7 +205,7 @@ const Bookdetail = (props) => {
         <div className="card" style={{width: '80%'}}>
           <div className="card-header text-start">책 소개</div>
           <div className="card-text text-start m-3">
-            {item.overview}
+            {detail.overview}
           </div>
         </div>
       </div>
