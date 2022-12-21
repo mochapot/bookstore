@@ -1,5 +1,5 @@
 @charset 'utf-8';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Oswald:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Oswald:wght@600&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 @tailwind base;
 @tailwind components;
@@ -51,9 +51,9 @@ p {
   margin: 0 auto;
 }
 .site-description {
-  font-size:14px;
-	font-style:italic;
-	font-weight:300;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
   line-height: 14px;
   margin-bottom: 20px;
   padding-top: 0;
@@ -76,6 +76,11 @@ p {
   font-family: "Oswald", sans-serif;
   color: #000;
 }
+.notice-title , .notice-txt {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 /* About */
 /* Bookdetaill */
 .bookpic {
@@ -94,7 +99,7 @@ p {
   text-align: center;
   margin-top: 20px;
 }
-.green-txt{
+.point-txt {
   font-weight: 700;
   color: #4dac27;
 }
@@ -106,10 +111,10 @@ p {
   height: 1px;
   background-color: #767676;
   opacity: 0.2;
-  margin : 10px auto;
+  margin: 10px 0px;
 }
 .detail-main {
-  gap: 5px
+  gap: 5px;
 }
 .info-bx {
   font-size: 13px;
