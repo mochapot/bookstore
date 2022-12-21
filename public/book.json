@@ -7,10 +7,10 @@
         "seq": 1,
         "title": "불편한 편의점",
         "author": "김호연",
-        "regDt": "2021-04-19T15:00:00.000+00:00",
+        "regDt": "2021-04-19",
         "publisher": "나무옆의자",
         "price": 12600,
-        "image": "이미지.img",
+        "image": "9791164064878.jpg",
         "category": "한국소설일반",
         "bdiSeq": 2,
         "subtitle": "숲속의 현자가 전하는 마지막 인생수업",
@@ -20,6 +20,30 @@
         "soldout": 1,
         "point": 800,
         "bdiBbiSeq": 1
+      }
+    ]
+  },
+  {
+    "status": "ok",
+    "책 번호": "1번의 책 상세페이지 정보",
+    "list": [
+      {
+        "seq": 2,
+        "title": "달러구트 꿈 백화점",
+        "author": "이미예",
+        "regDt": "2020-07-08",
+        "publisher": "팩토리나인",
+        "price": 12420,
+        "image": "2.img",
+        "category": "소설",
+        "bdiSeq": 1,
+        "subtitle": "김호연 장편소설",
+        "discount": 0.1,
+        "translater": "",
+        "overview": "text",
+        "soldout": 1,
+        "point": 700,
+        "bdiBbiSeq": 2
       }
     ]
   }

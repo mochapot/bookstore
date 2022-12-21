@@ -17,6 +17,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
 img {
   vertical-align: middle;
   border: 0;
@@ -31,6 +36,9 @@ body {
   font-family: "IBM Plex Sans KR", sans-serif;
 }
 
+p {
+  margin: 0;
+}
 /* 헤더 */
 .site-title-link {
   display: block;
@@ -86,14 +94,45 @@ body {
   content: "";
   display: block;
   bottom: 0px;
-  width: 100%;
+  width: 90%;
   height: 1px;
   background-color: #767676;
   opacity: 0.2;
-  margin : 10px 0px;
+  margin : 10px auto;
 }
 .detail-main {
   gap: 5px
+}
+.info-bx {
+  font-size: 13px;
+}
+.sns-bt {
+  position: absolute;
+  top: 0px;
+  right: -25px;
+  border: 1px solid #d3d3d3;
+  border-radius: 50%;
+  background: #fff;
+  width: 45px;
+  height: 45px;
+}
+.share-bt {
+  position: absolute;
+  top: 55px;
+  right: -25px;
+  border: 1px solid #d3d3d3;
+  border-radius: 50%;
+  background: #fff;
+  width: 45px;
+  height: 45px;
+}
+.bi-suit-heart {
+  font-size: 20px;
+}
+.bi-suit-heart-fill {
+  color: red;
+  font-size: 20px;
+  
 }
 /* 푸터 */
 .site-footer {
