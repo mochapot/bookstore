@@ -18,27 +18,33 @@ import request from "./api/request";
 
 const App = () => {
   const [book, setBook] = useState({});
-
   const [bookli, setBookli] = useState([]);
-
+  const [search, setSearch] = useState([]);
   const params = {
     Seq: 1,
   };
 
   const params1 = {
-    page: 0
+    page: 0,
   };
 
-console.log(params1);
+  const sParams = {
+    keyword: "word",
+  }
+
   const fetchData = async () => {
     const resultBook = await instance.get(request.fetchBook, { params });
     setBook(resultBook.data.list[0]);
 
     const resultBookli = await instance.get(request.fetchBookList, {
-      params1
+      params1,
     });
     setBookli(resultBookli.data.list.content);
   };
+
+  const resultSearch = await instance.get(request.fetchBookSearch, { sParams });
+  setSearch(resultSearch);
+
   useEffect(() => {
     fetchData();
   }, []);
