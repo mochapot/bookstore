@@ -1,8 +1,10 @@
 import Header from "./components/Header";
 import Home from "./components/Home";
-import About from "./components/About";
+import Search from "./components/Search";
 import Booklist from "./components/Booklist";
 import Bookdetail from "./components/Bookdetail";
+import Team from "./components/Team";
+import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
@@ -11,7 +13,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { instance, instance1 } from "./api/axios";
+import instance from "./api/axios";
 import request from "./api/request";
 
 const App = () => {
@@ -24,15 +26,16 @@ const App = () => {
   };
 
   const params1 = {
-    page: 0,
+    page: 0
   };
 
+console.log(params1);
   const fetchData = async () => {
     const resultBook = await instance.get(request.fetchBook, { params });
     setBook(resultBook.data.list[0]);
 
-    const resultBookli = await instance1.get(request.fetchBookList, {
-      params1,
+    const resultBookli = await instance.get(request.fetchBookList, {
+      params1
     });
     setBookli(resultBookli.data.list.content);
   };
@@ -40,16 +43,20 @@ const App = () => {
     fetchData();
   }, []);
 
-  // console.log({ bookli });
+  console.log({ bookli });
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home bookli={bookli} />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />}>
+          <Route path=":word" element={<Search bookli={bookli} />} />
+        </Route>
         <Route path="/booklist" element={<Booklist book={book} />} />
-        <Route path="/bookdetail" element={<Bookdetail book={book} />} />
+        <Route path="/bookdetail/:id" element={<Bookdetail book={book} />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
