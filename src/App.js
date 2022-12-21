@@ -6,6 +6,7 @@ import Bookdetail from "./components/Bookdetail";
 import Team from "./components/Team";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -38,7 +39,6 @@ console.log(params1);
   useEffect(() => {
     fetchData();
   }, [page]);
-
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Header />
