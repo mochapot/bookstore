@@ -1,171 +1,87 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import instance from "../api/axios";
+import request from "../api/request";
 import { Link } from "react-router-dom";
 
+const Booklist = () => {
+  const [bookli, setBookli] = useState([]);
+  const [page, setPage] = useState(0);
 
-export const List = () => {
-  const [list, setList] = useState([]);
+  // const { id } = useParams;
+
+  const fetchData = async () => {
+    const params = {
+      page: page,
+      size: 6,
+    };
+    const resultBookli = await instance.get(request.fetchBookList, {
+      params,
+    });
+    setBookli(resultBookli.data.list.content);
+  };
+
   useEffect(() => {
-    axios
-      .get("http://192.168.0.31:8915/api/book/list?page=0")
-      .then((res) => setList(res.data));
-  }, []);
-  console.log(list);
-};
-
-const Booklist = (props) => {
-  const item = props.book;
+    fetchData();
+  }, [page]);
+  // const item = bookli;
   // console.log(item);
+  let [searchParams, setSearchParams] = useSearchParams();
+  // const [page, setPage] = useState();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const strPage = searchParams.get("page");
+    setPage(parseInt(strPage !== null ? strPage : "1"));
+  }, [searchParams]);
+
+  const goPrev = () => {
+    if (page > 0) {
+      navigate("?page=" + (page - 1));
+    }
+  };
+  const goNext = () => {
+    navigate("?page=" + (page + 1));
+  };
+  // console.log(page);
   const fontSize = { fontSize: "14px" };
   const sfontSize = { fontSize: "12px" };
   const divSize = { width: "19rem" };
   const fontColor = { color: "#666666" };
+  const list = bookli.map((item) => {
+    return (
+      <div className="col d-flex justify-content-center">
+        <Link to={`/bookdetail/${item.seq}`}>
+          <div className="card h-100" style={divSize}>
+            <img src="images/1.jpg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title text-start" style={fontSize}>
+                {item.title}
+              </h5>
+              <div className="d-flex justify-content-start" style={sfontSize}>
+                <p style={fontColor}>{item.author} ·</p>
+                <p style={fontColor}>{item.publisher} /</p>
+                <p style={fontColor}>{item.regDt} /</p>
+                <p style={fontColor}>{item.price}원</p>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    );
+  });
   return (
     <div className="container text-center">
-      <div className="row row-cols-1 row-cols-md-3 g-4">
-        <div className="col d-flex justify-content-center">
-          <Link to={"/bookdetail"}>
-            <div className="card h-100" style={divSize}>
-              <img src="images/1.jpg" class="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title text-start" style={fontSize}>
-                  {item.title}
-                </h5>
-                <div className="d-flex justify-content-start" style={sfontSize}>
-                  <p style={fontColor}>{item.author} ·</p>
-                  <p style={fontColor}>{item.publisher} /</p>
-                  <p style={fontColor}>{item.regDt} /</p>
-                  <p style={fontColor}>{item.price}원</p>
-                </div>
-              </div>
-            </div>
-          </Link>
+      <div className="row row-cols-1 row-cols-md-3 g-4">{list}</div>
+      <div className="card card-body">
+        <div>
+          <div className="m-2">현재 페이지 : {page + 1}</div>
+          <button className="btn btn-outline-primary m-1" onClick={goPrev}>
+            Prev
+          </button>
+          <button className="btn btn-outline-primary m-1" onClick={goNext}>
+            Next
+          </button>
         </div>
-        <div className="col d-flex justify-content-center">
-          <Link to={"/bookdetail"}>
-            <div className="card h-100" style={divSize}>
-              <img src="images/2.jpg" className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title text-start" style={fontSize}>
-                  트렌드 코리아 2023
-                </h5>
-                <div className="d-flex justify-content-start" style={sfontSize}>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a</p>
-                </div>
-                <p className="card-text"></p>
-              </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col d-flex justify-content-center">
-          <Link to={"/bookdetail"}>
-            <div className="card h-100" style={divSize}>
-              <img src="images/3.jpg" className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title text-start" style={fontSize}>
-                  아버지의 해방일지
-                </h5>
-                <div className="d-flex justify-content-start" style={sfontSize}>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a</p>
-                </div>
-                <p className="card-text"></p>
-              </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col d-flex justify-content-center">
-          <Link to={"/bookdetail"}>
-            <div className="card h-100" style={divSize}>
-              <img src="images/4.jpg" class="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title text-start" style={fontSize}>
-                  아버지의 해방일지
-                </h5>
-                <div className="d-flex justify-content-start" style={sfontSize}>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a</p>
-                </div>
-                <p className="card-text"></p>
-              </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col d-flex justify-content-center">
-          <Link to={"/bookdetail"}>
-            <div className="card h-100" style={divSize}>
-              <img src="images/5.jpg" className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title text-start" style={fontSize}>
-                  아버지의 해방일지
-                </h5>
-                <div className="d-flex justify-content-start" style={sfontSize}>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a</p>
-                </div>
-                <p className="card-text"></p>
-              </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col d-flex justify-content-center">
-          <Link to={"/bookdetail"}>
-            <div className="card h-100" style={divSize}>
-              <img src="images/6.jpg" className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title text-start" style={fontSize}>
-                  아버지의 해방일지
-                </h5>
-                <div className="d-flex justify-content-start" style={sfontSize}>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a /</p>
-                  <p style={fontColor}>a</p>
-                </div>
-                <p className="card-text"></p>
-              </div>
-            </div>
-          </Link>
-        </div>
-        <div></div>
-        <nav aria-label="Page navigation example">
-          <ul className="pagination justify-content-center">
-            <li className="page-item disabled">
-              <Link
-                className="page-link"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-              >
-                Previous
-              </Link>
-            </li>
-            <li className="page-item">
-              <Link className="page-link" href="#">
-                1
-              </Link>
-            </li>
-            <li className="page-item">
-              <Link className="page-link" href="#">
-                2
-              </Link>
-            </li>
-            <li className="page-item">
-              <Link className="page-link" href="#">
-                3
-              </Link>
-            </li>
-            <li className="page-item">
-              <Link className="page-link" href="#">
-                Next
-              </Link>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
   );

@@ -12,38 +12,33 @@ import {
   Routes,
   Route,
   Navigate,
+  useParams,
 } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import instance from "./api/axios";
 import request from "./api/request";
 
 const App = () => {
-
   const [bookli, setBookli] = useState([]);
+  const [page, setPage] = useState(0);
 
-  const params = {
-    Seq: 1,
-  };
-
-  const params1 = {
-    page: 0
-  };
+  const { id } = useParams;
 
 console.log(params1);
   const fetchData = async () => {
-
-
+    const params = {
+      page: page,
+      size: 6,
+    };
     const resultBookli = await instance.get(request.fetchBookList, {
-      params1
+      params,
     });
     setBookli(resultBookli.data.list.content);
   };
+
   useEffect(() => {
     fetchData();
-  }, []);
-
-  console.log({ bookli });
-
+  }, [page]);
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Header />
