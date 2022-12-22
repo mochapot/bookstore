@@ -8,7 +8,7 @@ const Team = () => {
         Front 1조 - Back 6조
       </p>
       <p className="text-xl font-normal text-center text-gray-500">
-        Meet the best team in wolrd
+        Meet the best team in world
       </p>
       <div className="container">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
@@ -141,7 +141,7 @@ const Team = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="https://github.com/">
+                <a href="https://github.com/addi0518">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -169,7 +169,7 @@ const Team = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="https://github.com/">
+                <a href="https://github.com/dbtkddus2989">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -197,7 +197,7 @@ const Team = () => {
                 </p>
               </div>
               <div className="flex items-center justify-center w-40 pt-8 mx-auto text-gray-500 border-t border-gray-200">
-                <a href="https://github.com/">
+                <a href="https://github.com/jhjhg010">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"

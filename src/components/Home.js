@@ -52,7 +52,7 @@ const Home = (props) => {
             <img
               src={item.image}
               alt=""
-              className="h-48 w-full object-contain transition duration-500 group-hover:scale-105 sm:h-64"
+              className="h-48 w-full object-contain sm:h-64"
             />
             <div className="relative pt-3 bg-white">
               <p>
@@ -98,7 +98,7 @@ const Home = (props) => {
         </div>
         <div className="carousel-inner pt-200">
           <div className="carousel-item  active" data-bs-interval="7000">
-            <h3 className="carousel-caption position-absolute text-end text-3xl font-semibold">
+            <h3 className="carousel-caption position-absolute text-end text-sm md:text-lg lg:text-2xl font-semibold">
               주도적인 삶을 살기 위한 <br />
               3단계 핵심 솔루션
             </h3>
@@ -109,7 +109,7 @@ const Home = (props) => {
             />
           </div>
           <div className="carousel-item">
-            <h3 className="carousel-caption position-absolute text-end text-3xl font-semibold">
+            <h3 className="carousel-caption position-absolute text-end text-sm md:text-lg lg:text-2xl font-semibold">
               새로운 관점으로 <br />
               우리의 삶을 위로한다
             </h3>
@@ -120,7 +120,7 @@ const Home = (props) => {
             />
           </div>
           <div className="carousel-item">
-            <h3 className="carousel-caption position-absolute text-end text-3xl font-semibold">
+            <h3 className="carousel-caption position-absolute text-end text-sm md:text-lg lg:text-2xl font-semibold">
               새로운 언어는 <br />
               새로운 시대를 반영한다
             </h3>
