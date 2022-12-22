@@ -247,8 +247,8 @@ const Bookdetail = () => {
               <h3 className="modal-title fs-5" id="staticBackdropLabel">미리보기</h3>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div className="modal-body  position-relative">
-              <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "img"/>
+            <div className="modal-body d-flex justify-content-center">
+              <img className="m-2 shadow-lg" src= {detail.image} alt = "img"/>
               <button type="button" className="eBookPrevBt">
                 <i class="bi bi-chevron-left fs-2"></i>
               </button>
@@ -267,8 +267,8 @@ const Bookdetail = () => {
               <h1 class="modal-title m-2 fs-5" >eBook 미리보기</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "img"/>
+            <div class="modal-body d-flex justify-content-center">
+              <img className="m-2 shadow-lg" src= {detail.image} alt = "img"/>
               <button type="button" className="eBookPrevBt">
                 <i class="bi bi-chevron-left fs-2"></i>
               </button>

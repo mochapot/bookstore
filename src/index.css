@@ -151,7 +151,7 @@ p {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 20%;
+  left: 10%;
   opacity: 0.3;
   border: 0;
   background: none;
@@ -160,7 +160,7 @@ p {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 20%;
+  right: 10%;
   opacity: 0.3;
   border: 0;
   background: none;
