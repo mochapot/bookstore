@@ -24,7 +24,7 @@ const App = () => {
 
   const { id } = useParams;
 
-console.log(params1);
+// console.log(params);
   const fetchData = async () => {
     const params = {
       page: page,
