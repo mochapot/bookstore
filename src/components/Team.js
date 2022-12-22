@@ -1,4 +1,5 @@
 import React from "react";
+// import "./tailwind.css";
 
 const Team = () => {
   return (
@@ -7,7 +8,7 @@ const Team = () => {
         Front 1조 - Back 6조
       </p>
       <p className="text-xl font-normal text-center text-gray-500">
-        Meat the best team in wolrd
+        Meet the best team in wolrd
       </p>
       <div className="container">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
