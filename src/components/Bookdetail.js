@@ -6,8 +6,8 @@ import request from '../api/request';
 const Bookdetail = () => {
   
   const [detail, setDetail] = useState([]);
-
   // URI 처리
+
   const { id } = useParams();  
 
   const fetchData = async () => {
@@ -23,8 +23,8 @@ const Bookdetail = () => {
   }, []);
 
   // 천원단위 콤마
-  function comprice(price) {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  function comprice(p) {
+    return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   // 포인트 반올림
@@ -53,14 +53,22 @@ const Bookdetail = () => {
   const changeExcla = () => {
     setClickExcla(!clickExcla);
   };
+  const [clickShare, setClickShare] = useState(true);
+  const changeShare = () => {
+    setClickShare(!clickShare);
+  }
 
   return (
     <div className="container">
       <div className="position-relative">
         <div className="cate"> 
-          <Link to ="/">Home</Link>
-          <span></span>
-          <Link to ="/booklist">List</Link>
+          <Link to ="/">
+            <i className="bi bi-house-door-fill"></i>
+          </Link>
+          <span className="text-black text-opacity-25"> &nbsp;|&nbsp; </span>
+          <Link to ="/booklist">
+            리스트로 돌아가기
+          </Link>
         </div>
         <div className="d-flex justify-content-center flex-column m-4">
           <h2>{detail.title}</h2>
@@ -70,12 +78,14 @@ const Bookdetail = () => {
           <div className="d-flex gap-5">
             <div>              
               <div className="p-1">
-                <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "..."/>
+                <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "img"/>
               </div>
               <div className="d-flex justify-content-center">
                 <button
                   type="button"
                   className="btn btn-light btn-sm m-1 rounded-pill border border-secondary"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#bookModal"
                 >
                   <i className="bi bi-book m-1"></i>
                   미리보기
@@ -83,6 +93,8 @@ const Bookdetail = () => {
                 <button
                   type="button"
                   className="btn btn-light btn-sm m-1 rounded-pill border border-secondary"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#eBookModal"
                 >
                   <i className="bi bi-laptop m-1"></i>
                   eBook 미리보기
@@ -91,29 +103,41 @@ const Bookdetail = () => {
             </div>
             <div className="p-1">
               <div className="position-relative">
-                <button type= "button" className="sns-bt btn-success btn-outline-secondary">
+                <button type= "button" className="sns-bt btn-success btn-outline-secondary" onClick={changeShare}>
                   <i className="bi bi-share"></i>
                 </button>
+                <div className={clickShare ? "d-none" : "openShare rounded-pill"}>
+                  <div className="d-flex align-items-top">
+                  <button type="button" class="btn kakao m-1"></button>
+                  <button type="button" class="btn insta m-1"></button>
+                  <button type="button" class="btn line m-1"></button>
+                  <button type="button" class="btn twitter m-1"></button>
+                  <button type="button" class="btn facebook m-1"></button>
+                  <button type="button" className="shareClose m-1" onClick={changeShare}>
+                    <i class="bi bi-x"></i>
+                  </button>
+                  </div>
+                </div>
                 <button type= "button" className="share-bt btn-success btn-outline-secondary" onClick={changeHeart}>
                   <i className={clickHeart ? "bi bi-suit-heart" : "bi bi-suit-heart-fill"}></i>
                 </button>
               </div>
-              <h5 className="d-flex justify-content-start ms-4">{detail.author}&nbsp;저자</h5>
+              <h4 className="d-flex justify-content-start ms-4">{detail.author}&nbsp;저자</h4>
               <div className="d-flex ms-4">
                 <p>{detail.publisher}</p>
                 <span>&nbsp;·&nbsp;</span>
                 <p>{detail.regDt}</p>
               </div>
               <div className="d-flex ms-4">
-                <p className="fs-4 green-txt">{100*detail.discount}%</p>
+                <p className="fs-4 point-txt">{100*detail.discount}%</p>
                 <h4 className="m-1 mb-0">{comprice( detail.price * (1 - detail.discount) )}원</h4>
                 <p className="text-decoration-line-through fs-6 d-flex align-items-end">{comprice( detail.price * 1 )}원</p>
               </div>
-              <span className="line"></span>
+              <span className="lay-line"></span>
               <div className="d-flex justify-content-between ms-4 me-4">
                 <p className="fw-bold">적립/혜택</p>
                 <div className="d-flex justify-content-end">
-                  <span className="green-txt">{round(detail.price*0.05)}P</span>
+                  <span className="point-txt">{round(detail.price*0.05)}P</span>
                   <div className="dropdown">
                     <button className="del-bt" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false" onClick={changeArrow}>
                       <i className={clickArrow ? "m-1 bi bi-arrow-down-circle" : "m-1 bi bi-arrow-up-circle-fill"}></i>
@@ -126,7 +150,7 @@ const Bookdetail = () => {
                           <p>{round(detail.price*0.05)}P</p>
                         </div>
                       </li>
-                      <span className="line"></span>
+                      <span className="lay-line"></span>
                       <li className="ms-3 me-3">
                         <p className="fw-bold mb-1 fs-6">추가적립</p>
                         <div className="d-flex justify-content-between">
@@ -138,14 +162,14 @@ const Bookdetail = () => {
                           <p>최대 300원</p>
                         </div>
                       </li>
-                      <span className="line"></span>
+                      <span className="lay-line"></span>
                       <li className="ms-3 me-3">
                         <div className="d-flex justify-content-between">
                           <p className="fw-bold mb-1 fs-6">부가혜택 안내</p>
                           <div>
-                            <a href="#">제휴포인트</a>
+                            <a className = "boxlink" href="#">제휴포인트</a>
                             <span className="text-black text-opacity-25"> &nbsp;|&nbsp; </span>
-                            <a href="#">쿠폰/혜택</a>
+                            <a className = "boxlink" href="#">쿠폰/혜택</a>
                           </div>
                         </div>
                       </li>
@@ -153,13 +177,13 @@ const Bookdetail = () => {
                   </div>
                 </div>
               </div>
-              <span className="line"></span>
+              <span className="lay-line"></span>
               <div className="d-flex justify-content-between ms-4 me-4">
                 <p className="fw-bold">배송안내</p>
                 <div>
                   <div className="d-flex justify-content-end align-items-center">
                     <span>무료배송</span>
-                    <div class="dropdown">
+                    <div className="dropdown">
                       <button className="del-bt" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false" onClick={changeExcla}>
                         <i className={clickExcla ? "m-1 bi bi-exclamation-circle" : "m-1 bi bi-exclamation-circle-fill"}></i>
                       </button>
@@ -188,7 +212,7 @@ const Bookdetail = () => {
                   </div>
                 </div>
               </div>
-              <span className="line"></span>
+              <span className="lay-line"></span>
               <div className="d-flex justify-content-between">
                 <button type="button" className="btn btn-outline-light btn-md btn-warning m-2">
                   <i className="bi bi-gift m-2"></i>
@@ -215,6 +239,51 @@ const Bookdetail = () => {
           </div>
         </div>
       </div>
+      <div className="modal fade" id="bookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
+              <i className="bi bi-book m-2 fs-5"></i>
+              <h3 className="modal-title fs-5" id="staticBackdropLabel">미리보기</h3>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body  position-relative">
+              <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "img"/>
+              <button type="button" className="eBookPrevBt">
+                <i class="bi bi-chevron-left fs-2"></i>
+              </button>
+              <button type="button" className="eBookNextBt">
+                <i class="bi bi-chevron-right fs-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div className="modal fade" id="eBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <i className="bi bi-laptop m-2 fs-5"></i>
+              <h1 class="modal-title m-2 fs-5" >eBook 미리보기</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img className="bookpic m-2 shadow-lg mb-3 bg-body" src= {detail.image} alt = "img"/>
+              <button type="button" className="eBookPrevBt">
+                <i class="bi bi-chevron-left fs-2"></i>
+              </button>
+              <button type="button" className="eBookNextBt">
+                <i class="bi bi-chevron-right fs-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
     </div>
   );
 };

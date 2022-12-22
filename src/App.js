@@ -22,9 +22,6 @@ const App = () => {
   const [bookli, setBookli] = useState([]);
   const [page, setPage] = useState(0);
 
-  const { id } = useParams;
-
-console.log(params1);
   const fetchData = async () => {
     const params = {
       page: page,
@@ -39,6 +36,7 @@ console.log(params1);
   useEffect(() => {
     fetchData();
   }, [page]);
+
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Header />
