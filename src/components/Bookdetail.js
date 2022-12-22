@@ -5,8 +5,8 @@ import request from '../api/request';
 
 const Bookdetail = () => {
   
+  // URI 처리 및 데이터 연동
   const [detail, setDetail] = useState([]);
-  // URI 처리
 
   const { id } = useParams();  
 
@@ -27,18 +27,27 @@ const Bookdetail = () => {
     return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
-  // 포인트 반올림
+  // 포인트 올림
   const round = (x) => {
     return Math.ceil(x)
   };
 
   // 날짜 구하기
-  let today = new Date();   
-  let month = today.getMonth() + 1;
-  let date = today.getDate() + 1;
-  let week = ['일', '월', '화', '수', '목', '금', '토'];
-  let day = week[today.getDay() + 1];
-  const delday = (month + '/' + date + ',' + day)
+  const today = new Date();
+  today.setDate(today.getDate()+1);
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate()+10);
+  const month = today.getMonth()+1;
+  const nextMonth = tomorrow.getMonth()+1;
+  const date = today.getDate();
+  const tomoDate = tomorrow.getDate();
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
+  const day = week[today.getDay()];
+  const tomoDay = week[tomorrow.getDay()];
+  const weekDay = ('내일 (' + month + '/' + date + ',' + day + ')')
+  const weekend = ('모레 (' + nextMonth + '/' + tomoDate + ',' + tomoDay + ')')
+  
+  const deliDay = (day == '일') ? weekend : weekDay;
   
   // 바뀌는 버튼 만들기
   const [clickHeart, setClickHeart] = useState(true);
@@ -108,13 +117,13 @@ const Bookdetail = () => {
                 </button>
                 <div className={clickShare ? "d-none" : "openShare rounded-pill"}>
                   <div className="d-flex align-items-top">
-                  <button type="button" class="btn kakao m-1"></button>
-                  <button type="button" class="btn insta m-1"></button>
-                  <button type="button" class="btn line m-1"></button>
-                  <button type="button" class="btn twitter m-1"></button>
-                  <button type="button" class="btn facebook m-1"></button>
+                  <button type="button" className="btn kakao m-1"></button>
+                  <button type="button" className="btn insta m-1"></button>
+                  <button type="button" className="btn line m-1"></button>
+                  <button type="button" className="btn twitter m-1"></button>
+                  <button type="button" className="btn facebook m-1"></button>
                   <button type="button" className="shareClose m-1" onClick={changeShare}>
-                    <i class="bi bi-x"></i>
+                    <i className="bi bi-x"></i>
                   </button>
                   </div>
                 </div>
@@ -187,7 +196,7 @@ const Bookdetail = () => {
                       <button className="del-bt" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false" onClick={changeExcla}>
                         <i className={clickExcla ? "m-1 bi bi-exclamation-circle" : "m-1 bi bi-exclamation-circle-fill"}></i>
                       </button>
-                      <p class="dropdown-menu dropdown-menu-end p-3 info-bx" style={{width: "400px"}}>
+                      <p className="dropdown-menu dropdown-menu-end p-3 info-bx" style={{width: "400px"}}>
                         <p className="text-center fw-bold fs-5 mb-2">배송비 안내</p>
                         <p className="fw-bold mb-1 fs-6">국내도서 / 외국도서</p>
                         도서만 1만 원 이상 구매 시 무료배송<br />
@@ -205,7 +214,7 @@ const Bookdetail = () => {
                     </div> 
                   </div>
                   <div className="d-flex justify-content-end align-items-center">
-                    <span>내일 ({delday}) 도착예정</span>
+                    <span> {deliDay} 도착예정</span>
                     <button className="del-bt">
                       <i className="bi bi-question-circle m-1"></i>
                     </button>
@@ -250,40 +259,35 @@ const Bookdetail = () => {
             <div className="modal-body d-flex justify-content-center">
               <img className="m-2 shadow-lg" src= {detail.image} alt = "img"/>
               <button type="button" className="eBookPrevBt">
-                <i class="bi bi-chevron-left fs-2"></i>
+                <i className="bi bi-chevron-left fs-2"></i>
               </button>
               <button type="button" className="eBookNextBt">
-                <i class="bi bi-chevron-right fs-2"></i>
+                <i className="bi bi-chevron-right fs-2"></i>
               </button>
             </div>
           </div>
         </div>
       </div> 
       <div className="modal fade" id="eBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div className="modal-dialog modal-dialog-centered modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
               <i className="bi bi-laptop m-2 fs-5"></i>
-              <h1 class="modal-title m-2 fs-5" >eBook 미리보기</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 className="modal-title m-2 fs-5" >eBook 미리보기</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body d-flex justify-content-center">
+            <div className="modal-body d-flex justify-content-center">
               <img className="m-2 shadow-lg" src= {detail.image} alt = "img"/>
               <button type="button" className="eBookPrevBt">
-                <i class="bi bi-chevron-left fs-2"></i>
+                <i className="bi bi-chevron-left fs-2"></i>
               </button>
               <button type="button" className="eBookNextBt">
-                <i class="bi bi-chevron-right fs-2"></i>
+                <i className="bi bi-chevron-right fs-2"></i>
               </button>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
     </div>
   );
 };
