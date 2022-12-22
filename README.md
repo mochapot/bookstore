@@ -26,23 +26,23 @@
 [교보문고 미니 프로젝트](https://www.notion.so/bbb3fc5260ff47eeb1d22eab83f352a6)
 
 ## 프로젝트 구조  
-.
-└── /public
-    └── /icon
-    └── /images
-    └── index.html
-└── /src
-    ├── /api
-    │   ├── axios.js
-    │   └── request.js
-    ├── /components
-    │   ├── Header.js
-    │   ├── Home.js
-    │   ├── Booklist.js
-    │   ├── Bookdetail.js
-    │   ├── Team.js
-    │   ├── Footer.js
-    │   └── NotFound.js
-    ├── App.js
-    ├── index.css
+. <br />
+└── /public <br />
+    └── /icon <br />
+    └── /images <br />
+    └── index.html <br />
+└── /src <br />
+    ├── /api <br />
+    │   ├── axios.js <br />
+    │   └── request.js <br />
+    ├── /components <br />
+    │   ├── Header.js <br />
+    │   ├── Home.js <br />
+    │   ├── Booklist.js <br />
+    │   ├── Bookdetail.js <br />
+    │   ├── Team.js <br />
+    │   ├── Footer.js <br />
+    │   └── NotFound.js <br />
+    ├── App.js <br />
+    ├── index.css <br />
     └── index.js
