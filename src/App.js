@@ -6,45 +6,22 @@ import Bookdetail from "./components/Bookdetail";
 import Team from "./components/Team";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-  useParams,
 } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import instance from "./api/axios";
-import request from "./api/request";
 
 const App = () => {
-  const [bookli, setBookli] = useState([]);
-  const [page, setPage] = useState(0);
-
-  const fetchData = async () => {
-    const params = {
-      page: page,
-      size: 6,
-    };
-    const resultBookli = await instance.get(request.fetchBookList, {
-      params,
-    });
-    setBookli(resultBookli.data.list.content);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [page]);
-
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home bookli={bookli} />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/search" element={<Search />}>
-          <Route path=":word" element={<Search bookli={bookli} />} />
+          <Route path=":word" element={<Search />} />
         </Route>
         <Route path="/booklist" element={<Booklist />} />
         <Route path="/bookdetail/:id" element={<Bookdetail />} />

@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import instance from "../api/axios";
+import request from "../api/request";
 
 const Home = (props) => {
+  const [bookli, setBookli] = useState([]);
+  const fetchData = async () => {
+    const params = {
+      page: 0,
+      size: 6,
+    };
+    const resultBookli = await instance.get(request.fetchBookList, {
+      params,
+    });
+    setBookli(resultBookli.data.list.content);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   // const list = props.bookli.map((item) => {
   //     return (
   //       <li key={item.seq}>
@@ -24,8 +40,8 @@ const Home = (props) => {
   //     );
   // });
 
-  const list = props.bookli
-    .filter((item) => `${item.seq}` < 5)
+  const list = bookli
+    .filter((item, index) => index < 4)
     .map((item) => {
       return (
         <li key={item.seq}>
@@ -34,13 +50,13 @@ const Home = (props) => {
             className="block overflow-hidden group"
           >
             <img
-              src={process.env.PUBLIC_URL + "/images/book1.jpg"}
+              src={item.image}
               alt=""
-              className="h-[250px] w-full object-contain transition duration-500 group-hover:scale-105 sm:h-[350px]"
+              className="h-48 w-full object-contain transition duration-500 group-hover:scale-105 sm:h-64"
             />
             <div className="relative pt-3 bg-white">
               <p>
-                <span className="tracking-wider text-gray-900 group-hover:underline group-hover:underline-offset-4">
+                <span className="tracking-wider text-xs font-semibold text-gray-900 group-hover:underline group-hover:underline-offset-4 truncate">
                   {item.title}
                 </span>
               </p>
@@ -154,7 +170,7 @@ const Home = (props) => {
           </Link>
         </div>
         <hr />
-        <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-4 ps-0">
           {list}
         </ul>
       </div>

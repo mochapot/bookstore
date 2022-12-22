@@ -31,7 +31,7 @@ const Booklist = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const strPage = searchParams.get("page");
-    setPage(parseInt(strPage !== null ? strPage : "1"));
+    setPage(parseInt(strPage !== null ? strPage : "0"));
   }, [searchParams]);
 
   const goPrev = () => {
@@ -40,28 +40,45 @@ const Booklist = () => {
     }
   };
   const goNext = () => {
-    navigate("?page=" + (page + 1));
+    if (bookli.length < 6) {
+      if (window.alert("마지막 페이지입니다.")) {
+      }
+    } else {
+      navigate("?page=" + (page + 1));
+    }
   };
   // console.log(page);
   const fontSize = { fontSize: "14px" };
   const sfontSize = { fontSize: "12px" };
-  const divSize = { width: "19rem" };
+  const divSize = { width: "22rem" };
   const fontColor = { color: "#666666" };
+  // console.log(bookli);
   const list = bookli.map((item) => {
     return (
       <div className="col d-flex justify-content-center">
         <Link to={`/bookdetail/${item.seq}`}>
           <div className="card h-100" style={divSize}>
-            <img src="images/1.jpg" className="card-img-top" alt="..." />
+            <img src={item.image} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title text-start" style={fontSize}>
                 {item.title}
               </h5>
               <div className="d-flex justify-content-start" style={sfontSize}>
-                <p style={fontColor}>{item.author} ·</p>
-                <p style={fontColor}>{item.publisher} /</p>
+                <p
+                  className="text-truncate"
+                  style={{
+                    color: "#666666",
+                    fontSize: "12px",
+                    maxWidth: "100px",
+                  }}
+                >
+                  {item.author} ·
+                </p>
+                <p className="text-truncate" style={fontColor}>
+                  {item.publisher} /
+                </p>
                 <p style={fontColor}>{item.regDt} /</p>
-                <p style={fontColor}>{item.price}원</p>
+                <p style={fontColor}>{item.discountPrice}원</p>
               </div>
             </div>
           </div>
