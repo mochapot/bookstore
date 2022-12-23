@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import instance from "../api/axios";
 import request from "../api/request";
-import { Link } from "react-router-dom";
 
-const Booklist = () => {
-  const [bookli, setBookli] = useState([]);
+const Search = () => {
+  const [word, setWord] = useState("");
+  // const onSubmit = async () => {
+  //   window.location.href = "/bookstore/booklist/" + word;
+  // };
+
+  const [searchData, setSearchData] = useState([]);
   const [page, setPage] = useState(0);
-
-  // const { id } = useParams;
-
   const fetchData = async () => {
     const params = {
+      keyword: word,
       page: page,
       size: 6,
     };
-    const resultBookli = await instance.get(request.fetchBookList, {
+    const resultSearchData = await instance.get(request.fetchBookSearch, {
       params,
     });
-    setBookli(resultBookli.data.list.content);
+    setSearchData(resultSearchData.data.list.content);
   };
-
+  // console.log(page);
+  const fontSize = { fontSize: "14px" };
+  const sfontSize = { fontSize: "12px" };
+  const divSize = { width: "22rem" };
+  const fontColor = { color: "#666666" };
+  useEffect(() => {
+    fetchData();
+  }, []);
   useEffect(() => {
     fetchData();
   }, [page]);
@@ -40,20 +50,14 @@ const Booklist = () => {
     }
   };
   const goNext = () => {
-    if (bookli.length < 6) {
+    if (searchData.length < 6) {
       if (window.alert("마지막 페이지입니다.")) {
       }
     } else {
       navigate("?page=" + (page + 1));
     }
   };
-  // console.log(page);
-  const fontSize = { fontSize: "14px" };
-  const sfontSize = { fontSize: "12px" };
-  const divSize = { width: "22rem" };
-  const fontColor = { color: "#666666" };
-  // console.log(bookli);
-  const list = bookli.map((item) => {
+  const searchList = searchData.map((item) => {
     return (
       <div className="col d-flex justify-content-center">
         <Link to={`/bookdetail/${item.seq}`}>
@@ -78,7 +82,7 @@ const Booklist = () => {
                   {item.publisher} /
                 </p>
                 <p style={fontColor}>{item.regDt} /</p>
-                <p style={fontColor}>{item.discountPrice}원</p>
+                <p style={fontColor}>{item.price}원</p>
               </div>
             </div>
           </div>
@@ -86,22 +90,69 @@ const Booklist = () => {
       </div>
     );
   });
+  // const [searchData, setSearchData] = useState([]);
+  // const params = useParams();
+
+  //   useEffect(() => {
+  //     async function fetchData() {
+  //       const result = await axios.get(
+  //         "http://localhost:8080/product/search?word=" + params.word
+  //       );
+  //       console.log(result.data.result);
+  //       setSearchData(result.data.result);
+  //     }
+  //     fetchData();
+  //   }, []);
+
+  // const searchresult = searchData.map((item) => {
+  //   return <div filename={item.filename.split(",")[0]}></div>;
+  // });
+
   return (
-    <div className="container text-center">
-      <div className="row row-cols-1 row-cols-md-3 g-4">{list}</div>
-      <div className="card card-body">
-        <div>
-          <div className="m-2">현재 페이지 : {page + 1}</div>
-          <button className="btn btn-outline-primary m-1" onClick={goPrev}>
-            Prev
+    <div className="container mt-4 mb-4">
+      <div class="flex items-center justify-center mb-4">
+        <div class="flex border-2 rounded">
+          <input
+            type="search"
+            class="px-4 py-2 w-80"
+            placeholder="Search Books..."
+            required
+            onChange={(e) => {
+              setWord(e.target.value);
+            }}
+          />
+          <button
+            type="button"
+            class="flex items-center justify-center px-4 border-l"
+            onClick={fetchData}
+          >
+            <svg
+              class="w-6 h-6 text-gray-600"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+            </svg>
           </button>
-          <button className="btn btn-outline-primary m-1" onClick={goNext}>
-            Next
-          </button>
+        </div>
+      </div>
+      <div className="container text-center">
+        <div className="row row-cols-1 row-cols-md-3 g-4">{searchList}</div>
+        <div className="mt-3">
+          <div>
+            <div className="m-2">현재 페이지 : {page + 1}</div>
+            <button className="btn btn-outline-primary m-1" onClick={goPrev}>
+              Prev
+            </button>
+            <button className="btn btn-outline-primary m-1" onClick={goNext}>
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Booklist;
+export default Search;

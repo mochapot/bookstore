@@ -95,9 +95,26 @@ const Home = (props) => {
             data-bs-slide-to="2"
             aria-label="Slide 3"
           ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
         </div>
         <div className="carousel-inner pt-200">
           <div className="carousel-item  active" data-bs-interval="7000">
+            <h3 className="carousel-caption position-absolute text-end text-sm md:text-lg lg:text-2xl font-semibold">
+              Front 1조 - Back 6조 <br />
+              교보문고 미니 프로젝트
+            </h3>
+            <img
+              src={process.env.PUBLIC_URL + "/images/banner_1.png"}
+              className="img-fluid"
+              alt="banner_1"
+            />
+          </div>
+          <div className="carousel-item">
             <h3 className="carousel-caption position-absolute text-end text-sm md:text-lg lg:text-2xl font-semibold">
               주도적인 삶을 살기 위한 <br />
               3단계 핵심 솔루션
