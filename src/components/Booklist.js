@@ -6,10 +6,6 @@ import request from "../api/request";
 
 const Search = () => {
   const [word, setWord] = useState("");
-  // const onSubmit = async () => {
-  //   window.location.href = "/bookstore/booklist/" + word;
-  // };
-
   const [searchData, setSearchData] = useState([]);
   const [page, setPage] = useState(0);
   const fetchData = async () => {
@@ -23,21 +19,13 @@ const Search = () => {
     });
     setSearchData(resultSearchData.data.list.content);
   };
-  // console.log(page);
-  const fontSize = { fontSize: "14px" };
-  const sfontSize = { fontSize: "12px" };
-  const divSize = { width: "22rem" };
-  const fontColor = { color: "#666666" };
   useEffect(() => {
     fetchData();
   }, []);
   useEffect(() => {
     fetchData();
   }, [page]);
-  // const item = bookli;
-  // console.log(item);
   let [searchParams, setSearchParams] = useSearchParams();
-  // const [page, setPage] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     const strPage = searchParams.get("page");
@@ -57,6 +45,10 @@ const Search = () => {
       navigate("?page=" + (page + 1));
     }
   };
+  const fontSize = { fontSize: "14px" };
+  const sfontSize = { fontSize: "12px" };
+  const divSize = { width: "22rem" };
+  const fontColor = { color: "#666666" };
   const searchList = searchData.map((item) => {
     return (
       <div className="col d-flex justify-content-center">
